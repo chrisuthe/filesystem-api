@@ -1,0 +1,45 @@
+{
+  "filesystem_api": {
+    "base_url": "http://localhost:8000",
+    "description": "Local filesystem API for comprehensive file operations",
+    "capabilities": [
+      "Read and write text files",
+      "List directory contents with metadata", 
+      "Create and delete files and directories",
+      "Copy and move files/folders",
+      "Upload and download binary files",
+      "Get file information (size, dates, permissions)"
+    ],
+    "endpoints": {
+      "list_directory": "GET /files?path={path}",
+      "read_file": "GET /files/{path}/content",
+      "write_file": "POST /files/{path}/content",
+      "file_info": "GET /files/{path}/info", 
+      "create_directory": "POST /directories",
+      "delete": "DELETE /files/{path}",
+      "copy": "POST /files/{path}/copy",
+      "move": "POST /files/{path}/move",
+      "upload": "POST /files/{path}/upload",
+      "health": "GET /health",
+      "docs": "GET /docs"
+    },
+    "request_formats": {
+      "write_file": {"content": "text content", "encoding": "utf-8"},
+      "create_directory": {"path": "folder/name"},
+      "copy_move": "form data with destination=target/path"
+    },
+    "path_rules": [
+      "Use relative paths without leading slash",
+      "Forward slashes for all platforms", 
+      "Paths are automatically sanitized",
+      "Base directory is /data in container"
+    ],
+    "common_workflows": [
+      "Project setup and organization",
+      "Data file processing and analysis", 
+      "Content creation and documentation",
+      "File backup and archiving",
+      "Code generation and management"
+    ]
+  }
+}
